@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Details</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$(function(){
+	$("#frm1").submit(function(evt){
+		evt.preventDefault();
+		var obj= {
+				
+				email : $("#email").val(),
+		}
+		$.ajax({
+			url : '/searchUser',
+			method : 'POST', 
+		    data : JSON.stringify(obj),
+		    contentType : 'application/json',
+		    success : function(response){
+		  		alert(JSON.stringify(response));
+		    }   
+		})
+	})
+})
+</script>
+</head>
+<body>
+<form>
+  EmailId: <input id="email"/><br/>
+<button type="submit">View Details</button>
+</form>
+
+</body>
+</html>
